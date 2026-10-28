@@ -7,1003 +7,1043 @@
 <title>Table & Taste | Restaurant Reservation</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
-:root {
-    --cream: #fbf6ee;
-    --brown: #56341f;
-    --accent: #955732;
-    --border: #e8d9c7;
-    --muted: #806e60;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+    --brown: #563c2c;
+    --brown-light: #8c6a50;
+    --cream: #f8f3eb;
+    --white: #fffdf9;
+    --border: #e5d7c7;
+}
 
 body {
     background: var(--cream);
-    color: #302014;
-    font-family: 'DM Sans', sans-serif;
-    line-height: 1.6;
+    color: #3d2c21;
 }
-
-button, input, select, textarea { font: inherit; }
-button, a { cursor: pointer; }
-a { text-decoration: none; color: inherit; }
-
-.navbar {
-    min-height: 75px;
-    padding: 14px 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    background: #fffdf9;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.logo {
-    font: 700 23px 'Playfair Display', serif;
-    white-space: nowrap;
-}
-
-.logo span { color: var(--accent); }
 
 nav {
     display: flex;
-    flex-wrap: wrap;
-    gap: 22px;
-}
-
-nav a { font-size: 13px; }
-nav a:hover { color: var(--accent); }
-
-button {
-    border-radius: 5px;
-    padding: 11px 17px;
-    border: 1px solid var(--brown);
-}
-
-.primary, .nav-button {
-    background: var(--brown);
-    color: white;
-}
-
-.primary:hover, .nav-button:hover { background: var(--accent); }
-
-.page { display: none; min-height: 65vh; }
-.page.active { display: block; }
-
-.hero {
-    min-height: 590px;
-    padding: 70px 7%;
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    color: white;
-    background:
-      linear-gradient(90deg,rgba(25,14,7,.9),rgba(25,14,7,.55),rgba(25,14,7,.12)),
-      url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=85")
-      center/cover no-repeat;
+    padding: 18px 7%;
+    background: var(--white);
+    box-shadow: 0 3px 15px #3d2b1b12;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 20px;
 }
 
-.hero-content { max-width: 680px; }
-
-.eyebrow {
-    color: #d5a779;
-    letter-spacing: 2px;
-    font-size: 11px;
-    font-weight: 700;
-    margin-bottom: 15px;
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--brown);
+    white-space: nowrap;
 }
 
-h1, h2, h3 { font-family: 'Playfair Display', serif; }
-
-.hero h1 {
-    font-size: clamp(40px, 5.5vw, 66px);
-    line-height: 1.12;
+.logo span {
+    color: var(--brown-light);
 }
 
-.hero h1 em { color: #e9c39b; font-weight: 400; }
-
-.hero p.description {
-    margin: 22px 0;
-    max-width: 460px;
-    color: #f0e5d9;
-}
-
-.highlights {
+.nav-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 22px;
-    margin-top: 55px;
-    font-size: 12px;
+    gap: 10px;
 }
 
-.welcome {
-    padding: 70px 20px;
-    text-align: center;
-    max-width: 800px;
+.nav-links button {
+    border: none;
+    background: transparent;
+    color: var(--brown);
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.nav-links button:hover,
+.nav-links button.active {
+    background: #eee2d4;
+}
+
+.page {
+    display: none;
+    min-height: calc(100vh - 75px);
+    padding: 55px 7%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    isolation: isolate;
+}
+
+.page.active {
+    display: block;
+    animation: fadeIn .35s ease;
+}
+
+/* PIC 1: HOME BACKGROUND */
+#home {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXlZMvhSQ6TOcAudtCRc0LM9Sk7BYV__0FAJPqQgjk5Q&s=10");
+}
+
+/* PIC 2: RESERVATION BACKGROUND */
+#reservation {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrutI478w4YcaSMsUVFfUSlTJpoWiJXcw8mTILg0KLJQ&s=10");
+}
+
+/* PIC 3: MY BOOKING BACKGROUND */
+#booking {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB4Vkb2jeMPO8o-xz8Cq6Kye26HWZFP6LeEl9Yu8-u6w&s=10");
+}
+
+/* PIC 4: ADMIN BACKGROUND */
+#admin {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGyA8QE74a67W_7TvabVrmNJPsntJ5Y9rAfktRqeF4jw&s=10");
+}
+
+/* Mild overlay on each page */
+.page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(248, 243, 235, 0.62);
+    z-index: -1;
+}
+
+.container {
+    max-width: 1150px;
     margin: auto;
 }
 
-.welcome h2 { font-size: 34px; margin-bottom: 15px; }
-.welcome p { color: var(--muted); margin-bottom: 24px; }
-
-.banner {
-    padding: 45px 7%;
-    background: #efe0ce;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
+.panel {
+    background: rgba(255, 253, 249, 0.91);
+    border: 1px solid rgba(120, 87, 60, .2);
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 12px 35px rgba(48, 32, 20, .12);
+    backdrop-filter: blur(4px);
 }
 
-.banner h2 { font-size: 30px; }
-.banner p { color: var(--muted); margin-top: 8px; }
+h1, h2, h3 {
+    color: var(--brown);
+}
 
-.page-banner {
-    padding: 50px 7%;
+h1 {
+    font-size: clamp(35px, 5vw, 58px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 1.8;
+}
+
+.eyebrow {
+    color: var(--brown-light);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+}
+
+.home-content {
+    max-width: 720px;
+    padding: 60px 0;
+}
+
+.home-content p {
+    max-width: 600px;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: var(--brown);
     color: white;
-    background:
-      linear-gradient(90deg,rgba(32,18,10,.88),rgba(32,18,10,.32)),
-      url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80")
-      center/cover no-repeat;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: .2s;
 }
 
-.page-banner .eyebrow { color: #e9c39b; }
-.page-banner h1 { font-size: 43px; }
-.page-banner p:last-child { margin-top: 8px; }
+.btn:hover {
+    background: #79583f;
+    transform: translateY(-2px);
+}
 
-.layout {
-    max-width: 1300px;
-    margin: 35px auto 60px;
-    padding: 0 22px;
+.btn.secondary {
+    background: #e9ddcf;
+    color: var(--brown);
+}
+
+.btn.danger {
+    background: #94483b;
+}
+
+.button-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.cards {
     display: grid;
-    grid-template-columns: .9fr 1.1fr;
-    gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.info-card {
+    padding: 24px;
+    border: 1px solid var(--border);
+    background: rgba(255,253,249,.94);
+    border-radius: 12px;
+}
+
+.info-card p {
+    color: #796757;
+    font-size: 14px;
+}
+
+.form-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 28px;
     align-items: start;
 }
 
-.panel {
-    background: #fffdf9;
+.form-panel {
+    background: rgba(255,253,249,.95);
+    padding: 30px;
     border: 1px solid var(--border);
-    padding: 25px;
-    border-radius: 9px;
-    box-shadow: 0 5px 18px #56341f08;
+    border-radius: 13px;
+    box-shadow: 0 8px 25px #3d2b1b0d;
 }
 
-.panel h2 { font-size: 23px; margin-bottom: 18px; }
+.form-panel > p {
+    color: #806b5b;
+    margin-bottom: 23px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
 
 label {
     display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
     font-weight: 700;
-    font-size: 12px;
-    margin: 13px 0 6px;
+    color: var(--brown);
 }
 
 input, select, textarea {
     width: 100%;
-    padding: 11px;
-    border: 1px solid #dfd3c5;
-    border-radius: 5px;
-    background: white;
-    color: #302014;
+    padding: 12px;
+    border: 1px solid #ddcdbc;
+    border-radius: 6px;
+    background: #fffdf9;
+    color: #3d2c21;
+    font-size: 14px;
+    outline: none;
 }
 
 input:focus, select:focus, textarea:focus {
-    outline: 1px solid var(--accent);
+    border-color: var(--brown-light);
+    box-shadow: 0 0 0 3px #98765b1a;
 }
 
-.full { width: 100%; margin-top: 17px; }
-
-.legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 18px;
+textarea {
+    resize: vertical;
 }
 
-.dot {
-    width: 9px;
-    height: 9px;
-    display: inline-block;
-    border-radius: 50%;
-    margin-right: 4px;
+.form-panel .btn {
+    width: 100%;
 }
 
-.floor {
-    border: 5px solid #d7c2a5;
+.message {
+    display: none;
     padding: 15px;
-    border-radius: 7px;
-    background: repeating-linear-gradient(90deg,#ead9c2 0,#ead9c2 25px,#e3cfb4 26px,#e3cfb4 27px);
-}
-
-.floor-label, .entrance {
-    text-align: center;
-    padding: 10px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: #6d4b30;
-    font-weight: bold;
-}
-
-.table-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px 8px;
-}
-
-.seat {
-    min-height: 62px;
-    background: #287650;
-    color: white;
-    border: 2px solid #1d603f;
-    border-radius: 7px;
-    font-size: 12px;
-}
-
-.seat small { display: block; font-size: 9px; }
-.seat.selected { background: #d28a26; border-color: #965b14; }
-.seat:disabled { background: #b63b35; border-color: #962c28; cursor: not-allowed; }
-
-.summary {
     margin-top: 20px;
-    padding: 15px;
-    background: #f7eee2;
-    border-radius: 6px;
+    border-radius: 7px;
+    background: #f0e8dc;
+    border: 1px solid #dfcdb9;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.message.show {
+    display: block;
+}
+
+.message strong {
+    color: var(--brown);
+}
+
+.lookup-panel {
+    max-width: 750px;
+    margin: auto;
+}
+
+.booking-details {
+    margin-top: 20px;
+    line-height: 2;
+}
+
+.booking-details p {
+    border-bottom: 1px solid #eadfd2;
+    padding: 5px 0;
+}
+
+.admin-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.stat {
+    background: #f3e9dd;
+    border-radius: 10px;
+    padding: 22px;
+    border: 1px solid #e4d3c1;
+}
+
+.stat p {
+    color: #806b5b;
+    font-size: 14px;
+}
+
+.stat h3 {
+    font-size: 30px;
+    margin-top: 8px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 22px;
+    background: var(--white);
+    border-radius: 9px;
+    border: 1px solid var(--border);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 700px;
+}
+
+th, td {
+    padding: 13px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eadfd2;
     font-size: 13px;
 }
 
-.summary h3 { margin-bottom: 6px; }
-
-.results {
-    max-width: 1100px;
-    padding: 0 20px;
-    margin: 0 auto 50px;
+th {
+    background: #eee2d4;
+    color: var(--brown);
 }
-
-.booking-card {
-    background: #fffdf9;
-    border: 1px solid var(--border);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.booking-card p { font-size: 13px; margin: 5px 0; }
 
 .status {
     display: inline-block;
-    padding: 4px 9px;
-    margin: 7px 0;
-    background: #d9efdf;
-    color: #1d6839;
-    border-radius: 4px;
-    font-size: 11px;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #e3ebd9;
+    color: #3f6536;
+    font-size: 12px;
+    font-weight: 700;
 }
 
-.status.cancelled { background: #f9dddd; color: #a72e2e; }
-
-.actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 12px; }
-
-.admin-login {
-    min-height: 570px;
-    display: grid;
-    place-items: center;
-    padding: 30px 15px;
-    background: linear-gradient(#3d2519dc,#3d2519dc),
-      url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80") center/cover;
+.status.cancelled {
+    background: #f1ded9;
+    color: #8c3d32;
 }
-
-.login-card {
-    background: #fffdf9;
-    width: min(100%,390px);
-    padding: 32px;
-    border-radius: 10px;
-}
-
-.login-card h1 { text-align: center; font-size: 29px; }
-.login-card > p { text-align: center; margin-bottom: 20px; color: var(--muted); }
-
-.dashboard { padding: 35px 4%; }
-.dashboard-heading { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 25px; }
-.dashboard-heading h1 { font-size: 34px; }
-.stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; margin-bottom: 22px; }
-.stat { padding: 18px; background: #fffdf9; border: 1px solid var(--border); border-radius: 8px; }
-.stat span, .stat strong { display: block; }
-.stat span { font-size: 12px; color: var(--muted); }
-.stat strong { font: 600 30px 'Playfair Display',serif; }
-
-.table-scroll { overflow-x: auto; }
-table { border-collapse: collapse; width: 100%; min-width: 780px; font-size: 12px; }
-th, td { text-align: left; padding: 12px 9px; border-bottom: 1px solid var(--border); }
-th { background: #f7eee2; }
-
-.hidden { display: none !important; }
 
 footer {
     text-align: center;
-    padding: 35px 20px;
-    color: #f5e6d6;
-    background: #321f14;
+    background: #3c2b20;
+    color: #f8eee3;
+    padding: 25px 7%;
 }
 
-footer p { margin-top: 8px; font-size: 13px; color: #dfc9b2; }
-footer small { display: block; margin-top: 15px; color: #cdb39b; }
-
-.modal {
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    padding: 20px;
-    display: grid;
-    place-items: center;
-    background: #000a;
-    overflow-y: auto;
+footer p {
+    color: #ddcabb;
+    font-size: 13px;
 }
 
-.receipt {
-    position: relative;
-    background: white;
-    padding: 30px;
-    width: min(100%,480px);
-    border-radius: 8px;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.close {
-    position: absolute;
-    right: 12px;
-    top: 5px;
-    font-size: 27px;
-    background: none;
-    border: none;
+@media (max-width: 850px) {
+    nav {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .form-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .page {
+        background-attachment: scroll;
+    }
 }
 
-.receipt h2 { text-align: center; margin: 10px 0; }
-.receipt-brand { text-align: center; font: 700 25px 'Playfair Display',serif; color: var(--brown); }
-.receipt-line { display: flex; justify-content: space-between; gap: 15px; padding: 9px 0; border-bottom: 1px dashed #ddd; font-size: 13px; }
-.receipt-line span:last-child { font-weight: 600; text-align: right; overflow-wrap: anywhere; }
-.receipt-line span:first-child { color: var(--muted); }
-.receipt-actions { display: flex; gap: 10px; margin-top: 20px; }
-.receipt-actions button { flex: 1; }
-.message { font-size: 13px; margin-top: 10px; color: var(--muted); }
-.error { color: #b52d2d; }
-.success { color: #217547; }
+@media (max-width: 550px) {
+    .page {
+        padding: 28px 5%;
+    }
 
-@media(max-width:850px) {
-    .navbar { flex-wrap: wrap; }
-    nav { order: 3; width: 100%; justify-content: center; }
-    .layout { grid-template-columns: 1fr; }
-    .hero { min-height: 510px; }
-}
+    .panel, .form-panel {
+        padding: 22px;
+    }
 
-@media(max-width:550px) {
-    .navbar { padding: 12px; gap: 12px; }
-    .logo { font-size: 19px; }
-    nav { gap: 12px; }
-    nav a { font-size: 11px; }
-    .nav-button { padding: 9px; font-size: 12px; }
-    .hero { padding: 45px 7%; }
-    .hero h1 { font-size: 40px; }
-    .highlights { gap: 12px; margin-top: 35px; }
-    .layout { padding: 0 12px; }
-    .panel { padding: 17px; }
-    .table-grid { gap: 8px 5px; }
-    .seat { min-height: 55px; font-size: 10px; }
-    .stats { grid-template-columns: 1fr; }
-    .dashboard-heading { flex-direction: column; }
-}
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
 
-@media print {
-    body * { visibility: hidden; }
-    #receiptModal, #receiptModal * { visibility: visible; }
-    #receiptModal { position: absolute; inset: 0; display: block !important; background: white; padding: 0; }
-    .receipt { width: 100%; max-width: none; }
-    .no-print { display: none !important; }
+    .field.full {
+        grid-column: auto;
+    }
+
+    .nav-links {
+        gap: 4px;
+    }
+
+    .nav-links button {
+        padding: 9px;
+        font-size: 12px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header class="navbar">
-    <a class="logo" href="#" onclick="showPage('home')">♨ Table <span>&</span> Taste</a>
-    <nav>
-        <a href="#" onclick="showPage('home')">Home</a>
-        <a href="#" onclick="showPage('reservation')">Reservation</a>
-        <a href="#" onclick="showPage('bookings')">My Bookings</a>
-        <a href="#" onclick="showPage('admin')">Admin</a>
-    </nav>
-    <button class="nav-button" onclick="showPage('reservation')">Book a Table</button>
-</header>
+<nav>
+    <div class="logo">Table <span>& Taste.</span></div>
 
+    <div class="nav-links">
+        <button class="active" onclick="showPage('home', this)">Home</button>
+        <button onclick="showPage('reservation', this)">Reservation</button>
+        <button onclick="showPage('booking', this)">My Booking</button>
+        <button onclick="showPage('admin', this)">Admin</button>
+    </div>
+</nav>
+
+<!-- HOME PAGE: PIC 1 -->
 <main>
-<section id="home" class="page active">
-    <div class="hero">
-        <div class="hero-content">
-            <p class="eyebrow">GOOD FOOD · GOOD COMPANY</p>
-            <h1>Good Food<br>Brings People <em>Together.</em></h1>
-            <p class="description">Experience a warm atmosphere, thoughtful hospitality and a memorable dining experience at Table & Taste.</p>
-            <button class="primary" onclick="showPage('reservation')">Book Your Table →</button>
-            <div class="highlights">
-                <span>✦ Fresh Ingredients</span>
-                <span>✦ Cosy Ambience</span>
-                <span>✦ Great Service</span>
+<section class="page active" id="home">
+    <div class="container">
+        <div class="home-content">
+            <p class="eyebrow">Welcome to Table & Taste</p>
+            <h1>Good Food.<br>Beautiful Moments.</h1>
+            <p>
+                Enjoy a warm dining experience and make every meal special.
+                Reserve your table easily, manage your booking, and plan your
+                next visit with Table & Taste.
+            </p>
+
+            <div class="button-row">
+                <button class="btn" onclick="showPage('reservation')">
+                    Reserve a Table
+                </button>
+                <button class="btn secondary" onclick="showPage('booking')">
+                    View My Booking
+                </button>
             </div>
         </div>
-    </div>
 
-    <div class="welcome">
-        <p class="eyebrow">WELCOME TO TABLE & TASTE</p>
-        <h2>Your table. Your time. Your experience.</h2>
-        <p>Whether it is a family dinner, a special occasion or a quiet evening with friends, we have a place for you. Choose your preferred table and make your reservation in just a few simple steps.</p>
-        <button class="primary" onclick="showPage('reservation')">Find Your Table →</button>
-    </div>
-
-    <div class="banner">
-        <div>
-            <p class="eyebrow">YOUR EVENING, SORTED</p>
-            <h2>Good evenings start with a good table.</h2>
-            <p>Choose your favourite spot and we'll take care of the rest.</p>
-        </div>
-        <button class="primary" onclick="showPage('reservation')">Reserve Now →</button>
-    </div>
-</section>
-
-<section id="reservation" class="page">
-    <div class="page-banner">
-        <p class="eyebrow">YOUR EVENING STARTS HERE</p>
-        <h1>Book Your Table</h1>
-        <p>An unforgettable dining experience awaits.</p>
-    </div>
-
-    <div class="layout">
-        <div class="panel">
-            <h2>Reservation Details</h2>
-            <form id="bookingForm">
-                <label for="customerName">Full Name</label>
-                <input id="customerName" required placeholder="Enter your name">
-
-                <label for="customerEmail">Email Address</label>
-                <input id="customerEmail" type="email" required placeholder="Enter your email">
-
-                <label for="customerPhone">Phone Number</label>
-                <input id="customerPhone" type="tel" pattern="[0-9+\-\s]{7,16}" required placeholder="Enter phone number">
-
-                <label for="bookingDate">Date</label>
-                <input id="bookingDate" type="date" required>
-
-                <label for="bookingTime">Time</label>
-                <input id="bookingTime" type="time" required>
-
-                <label for="guestCount">Number of Guests</label>
-                <select id="guestCount">
-                    <option>1</option><option selected>2</option><option>3</option>
-                    <option>4</option><option>5</option><option>6</option>
-                </select>
-
-                <label for="diningLocation">Dining Location</label>
-                <select id="diningLocation">
-                    <option>Indoor</option><option>Window</option><option>Garden</option>
-                </select>
-
-                <label for="specialRequest">Special Request (Optional)</label>
-                <textarea id="specialRequest" rows="3" placeholder="Birthday, anniversary, etc."></textarea>
-
-                <button type="button" class="primary full" onclick="findTables()">Find Available Tables</button>
-                <p id="tableMessage" class="message"></p>
-            </form>
-        </div>
-
-        <div class="panel">
-            <h2>Select Your Table</h2>
-            <div class="legend">
-                <span><i class="dot" style="background:#287650"></i>Available</span>
-                <span><i class="dot" style="background:#b63b35"></i>Occupied</span>
-                <span><i class="dot" style="background:#d28a26"></i>Selected</span>
+        <div class="cards">
+            <div class="info-card">
+                <h3>Easy Reservation</h3>
+                <p>Choose your preferred date, time, guest count and table.</p>
             </div>
-
-            <div class="floor">
-                <div class="floor-label">WINDOW SIDE</div>
-                <div id="tableGrid" class="table-grid"></div>
-                <div class="entrance">ENTRANCE</div>
+            <div class="info-card">
+                <h3>Simple Booking</h3>
+                <p>Use your booking reference to check your reservation details.</p>
             </div>
-
-            <div class="summary">
-                <h3>Booking Summary</h3>
-                <p id="summaryText">Select a date, time and table to continue.</p>
+            <div class="info-card">
+                <h3>Comfortable Experience</h3>
+                <p>Plan your visit with a simple and user-friendly interface.</p>
             </div>
-            <button id="confirmButton" class="primary full" onclick="confirmBooking()" disabled>Confirm Reservation</button>
         </div>
     </div>
 </section>
 
-<section id="bookings" class="page">
-    <div class="page-banner">
-        <p class="eyebrow">YOUR RESERVATIONS</p>
-        <h1>My Bookings</h1>
-        <p>View, print or cancel your reservations.</p>
-    </div>
+<!-- RESERVATION PAGE: PIC 2 -->
+<section class="page" id="reservation">
+    <div class="container">
+        <div class="panel">
+            <p class="eyebrow">Plan Your Visit</p>
+            <h1 style="font-size:42px">Reserve Your Table</h1>
+            <p style="margin-bottom:28px">
+                Enter your details below to create your reservation.
+            </p>
 
-    <div class="panel" style="max-width:550px;margin:35px auto;padding:25px">
-        <h2>Find Your Booking</h2>
-        <form id="lookupForm">
-            <label for="lookupEmail">Email Address</label>
-            <input id="lookupEmail" type="email" required placeholder="Enter your booking email">
-            <button class="primary full">Find Booking</button>
-        </form>
+            <div class="form-layout">
+                <div class="info-card">
+                    <h2>Make It Special</h2>
+                    <p>
+                        Choose a suitable date and time, select your preferred
+                        table, and save your booking reference after confirmation.
+                    </p>
+                    <br>
+                    <h3>Before You Book</h3>
+                    <p>
+                        Please provide the correct contact details and keep
+                        your booking reference for future use.
+                    </p>
+                </div>
+
+                <div class="form-panel">
+                    <form id="reservationForm">
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="customerName">Full Name</label>
+                                <input id="customerName" required maxlength="80"
+                                       placeholder="Enter your name">
+                            </div>
+
+                            <div class="field">
+                                <label for="phone">Phone Number</label>
+                                <input id="phone" type="tel" required
+                                       pattern="[0-9+() -]{7,20}"
+                                       placeholder="Enter phone number">
+                            </div>
+
+                            <div class="field">
+                                <label for="date">Date</label>
+                                <input id="date" type="date" required>
+                            </div>
+
+                            <div class="field">
+                                <label for="time">Time</label>
+                                <select id="time" required>
+                                    <option value="">Select time</option>
+                                    <option>11:00 AM</option>
+                                    <option>12:00 PM</option>
+                                    <option>01:00 PM</option>
+                                    <option>02:00 PM</option>
+                                    <option>06:00 PM</option>
+                                    <option>07:00 PM</option>
+                                    <option>08:00 PM</option>
+                                    <option>09:00 PM</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="guests">Number of Guests</label>
+                                <select id="guests" required>
+                                    <option value="">Select guests</option>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                    <option value="7">7 Guests</option>
+                                    <option value="8">8 Guests</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="table">Preferred Table</label>
+                                <select id="table" required>
+                                    <option value="">Select table</option>
+                                    <option value="T01">Table 01</option>
+                                    <option value="T02">Table 02</option>
+                                    <option value="T03">Table 03</option>
+                                    <option value="T04">Table 04</option>
+                                    <option value="T05">Table 05</option>
+                                    <option value="T06">Table 06</option>
+                                    <option value="T07">Table 07</option>
+                                    <option value="T08">Table 08</option>
+                                </select>
+                            </div>
+
+                            <div class="field full">
+                                <label for="notes">Special Requests</label>
+                                <textarea id="notes" rows="3"
+                                          maxlength="500"
+                                          placeholder="Optional requests"></textarea>
+                            </div>
+                        </div>
+
+                        <button class="btn" type="submit">Confirm Reservation</button>
+                    </form>
+
+                    <div class="message" id="reservationMessage" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="bookingResults" class="results"></div>
 </section>
 
-<section id="admin" class="page">
-    <div id="adminLogin" class="admin-login">
-        <div class="login-card">
-            <h1>♨ Table & Taste</h1>
-            <p>Admin Login</p>
-            <form id="adminForm">
-                <label for="adminUsername">Username</label>
-                <input id="adminUsername" required placeholder="Enter username">
-                <label for="adminPassword">Password</label>
-                <input id="adminPassword" type="password" required placeholder="Enter password">
-                <button class="primary full">Login</button>
-                <p id="loginMessage" class="message"></p>
-            </form>
-            <p>Authorised personnel only.</p>
+<!-- MY BOOKING PAGE: PIC 3 -->
+<section class="page" id="booking">
+    <div class="container">
+        <div class="panel lookup-panel">
+            <p class="eyebrow">Manage Your Reservation</p>
+            <h1 style="font-size:42px">My Booking</h1>
+            <p style="margin-bottom:25px">
+                Enter your booking reference to find your reservation,
+                view its details or cancel it.
+            </p>
+
+            <div class="field">
+                <label for="bookingReference">Booking Reference</label>
+                <input id="bookingReference" placeholder="Example: TT123456">
+            </div>
+
+            <div class="button-row">
+                <button class="btn" onclick="findBooking()">Find Booking</button>
+            </div>
+
+            <div class="message" id="bookingMessage" aria-live="polite"></div>
         </div>
     </div>
+</section>
 
-    <div id="adminDashboard" class="dashboard hidden">
-        <div class="dashboard-heading">
-            <div><p class="eyebrow">RESTAURANT MANAGEMENT</p><h1>Admin Dashboard</h1></div>
-            <div><button onclick="exportCSV()">Export CSV</button> <button onclick="adminLogout()">Logout</button></div>
-        </div>
-
-        <div class="stats">
-            <div class="stat"><span>Total Bookings</span><strong id="totalCount">0</strong></div>
-            <div class="stat"><span>Confirmed</span><strong id="confirmedCount">0</strong></div>
-            <div class="stat"><span>Cancelled</span><strong id="cancelledCount">0</strong></div>
-        </div>
-
+<!-- ADMIN PAGE: PIC 4 -->
+<section class="page" id="admin">
+    <div class="container">
         <div class="panel">
-            <h2>All Reservations</h2>
-            <div class="table-scroll">
-                <table>
-                    <thead><tr><th>Customer</th><th>Contact</th><th>Date & Time</th><th>Table</th><th>Guests</th><th>Status</th><th>Action</th></tr></thead>
-                    <tbody id="adminTableBody"></tbody>
-                </table>
+            <p class="eyebrow">Management Area</p>
+            <h1 style="font-size:42px">Admin Dashboard</h1>
+            <p>
+                View reservation records saved in this browser.
+                This is a demonstration dashboard, not a secure production admin system.
+            </p>
+
+            <div class="form-panel" style="margin-top:25px">
+                <h2>Admin Login</h2>
+                <p>Use the demo credentials to view the local booking list.</p>
+
+                <form id="adminLoginForm">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="adminUser">Username</label>
+                            <input id="adminUser" required placeholder="Enter username">
+                        </div>
+                        <div class="field">
+                            <label for="adminPassword">Password</label>
+                            <input id="adminPassword" type="password" required
+                                   placeholder="Enter password">
+                        </div>
+                    </div>
+                    <button class="btn" type="submit">Login</button>
+                </form>
+                <div class="message" id="adminLoginMessage" aria-live="polite"></div>
             </div>
-            <p id="adminEmpty" class="message"></p>
+
+            <div id="adminDashboard" hidden>
+                <div class="admin-summary">
+                    <div class="stat">
+                        <p>Total Reservations</p>
+                        <h3 id="totalBookings">0</h3>
+                    </div>
+                    <div class="stat">
+                        <p>Confirmed</p>
+                        <h3 id="confirmedBookings">0</h3>
+                    </div>
+                    <div class="stat">
+                        <p>Cancelled</p>
+                        <h3 id="cancelledBookings">0</h3>
+                    </div>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn" onclick="renderAdmin()">Refresh Records</button>
+                    <button class="btn secondary" onclick="exportBookings()">Export CSV</button>
+                    <button class="btn danger" onclick="adminLogout()">Logout</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Reference</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Guests</th>
+                                <th>Table</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 </main>
 
 <footer>
-    <a class="logo" href="#" onclick="showPage('home')" style="color:white">Table <span>&</span> Taste</a>
-    <p>Good food. Warm hospitality. Memorable moments.</p>
-    <p>Please arrive on time. Reservations may be cancelled after a 15-minute grace period.</p>
-    <small>© <span id="year"></span> Table & Taste</small>
+    <h3 style="color:#fff4e8">Table & Taste</h3>
+    <p>Good food, good company and memorable moments.</p>
+    <p>Restaurant Table Reservation System | Student Project</p>
 </footer>
 
-<div id="receiptModal" class="modal hidden">
-    <div class="receipt">
-        <button class="close no-print" onclick="closeReceipt()">×</button>
-        <div class="receipt-brand">♨ Table & Taste</div>
-        <h2>Reservation Receipt</h2>
-        <p id="receiptStatus" class="status"></p>
-        <div id="receiptDetails"></div>
-        <p id="lateWarning" class="message error hidden"></p>
-        <div class="receipt-actions no-print">
-            <button class="primary" onclick="window.print()">Print / Save PDF</button>
-            <button onclick="closeReceipt()">Close</button>
-        </div>
-    </div>
-</div>
-
 <script>
-const KEY = "tableTasteReservations";
-let selectedTable = "";
-let adminLoggedIn = false;
+const pages = document.querySelectorAll(".page");
+const navButtons = document.querySelectorAll(".nav-links button");
 
-const tables = [
-    {id:"T01",location:"Indoor"},{id:"T02",location:"Indoor"},
-    {id:"T03",location:"Indoor"},{id:"T04",location:"Indoor"},
-    {id:"T05",location:"Window"},{id:"T06",location:"Window"},
-    {id:"T07",location:"Window"},{id:"T08",location:"Window"},
-    {id:"T09",location:"Garden"},{id:"T10",location:"Garden"},
-    {id:"T11",location:"Garden"},{id:"T12",location:"Garden"}
-];
+function showPage(pageId, clickedButton) {
+    pages.forEach(page => page.classList.toggle("active", page.id === pageId));
 
-const $ = id => document.getElementById(id);
+    navButtons.forEach(button => button.classList.remove("active"));
+
+    const targetButton = clickedButton ||
+        [...navButtons].find(button =>
+            button.getAttribute("onclick").includes("'" + pageId + "'")
+        );
+
+    if (targetButton) targetButton.classList.add("active");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+const dateField = document.getElementById("date");
+const currentDate = new Date();
+const today = new Date(
+    currentDate.getTime() - currentDate.getTimezoneOffset() * 60000
+).toISOString().slice(0, 10);
+
+dateField.min = today;
 
 function getBookings() {
-    try { return JSON.parse(localStorage.getItem(KEY)) || []; }
-    catch { return []; }
-}
-
-function saveBookings(data) {
-    localStorage.setItem(KEY, JSON.stringify(data));
-}
-
-function showPage(id) {
-    document.querySelectorAll(".page").forEach(p => p.classList.toggle("active", p.id === id));
-    if(id === "reservation") { renderTables(); updateSummary(); }
-    if(id === "admin" && adminLoggedIn) renderAdmin();
-    window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function message(id,text,type="") {
-    $(id).textContent=text;
-    $(id).className="message "+type;
-}
-
-function localToday() {
-    const d = new Date();
-    d.setMinutes(d.getMinutes()-d.getTimezoneOffset());
-    return d.toISOString().slice(0,10);
-}
-
-$("year").textContent = new Date().getFullYear();
-$("bookingDate").min = localToday();
-
-function isBooked(booking,date,time) {
-    return booking.date===date && booking.time===time &&
-        !["Cancelled","Completed"].includes(booking.status);
-}
-
-function renderTables() {
-    const grid=$("tableGrid");
-    grid.replaceChildren();
-
-    const location=$("diningLocation").value;
-    const date=$("bookingDate").value;
-    const time=$("bookingTime").value;
-    const bookings=getBookings();
-
-    tables.filter(t=>t.location===location).forEach(t=>{
-        const occupied=bookings.some(b=>b.table===t.id && isBooked(b,date,time));
-        const button=document.createElement("button");
-        button.type="button";
-        button.className="seat";
-        if(occupied) button.disabled=true;
-        if(occupied) button.title="Already reserved";
-        if(occupied) button.style.background="#b63b35";
-        if(selectedTable===t.id) button.classList.add("selected");
-        button.innerHTML=t.id+"<small>"+t.location+"</small>";
-
-        button.onclick=()=>{
-            if(occupied)return;
-            selectedTable=t.id;
-            renderTables();
-            updateSummary();
-            message("tableMessage","Table "+t.id+" selected.","success");
-        };
-        grid.appendChild(button);
-    });
-}
-
-["bookingDate","bookingTime","diningLocation"].forEach(id=>{
-    $(id).addEventListener("change",()=>{
-        selectedTable="";
-        renderTables();
-        updateSummary();
-    });
-});
-$("guestCount").addEventListener("change",updateSummary);
-
-function updateSummary() {
-    const date=$("bookingDate").value;
-    const time=$("bookingTime").value;
-    if(!date || !time) {
-        $("summaryText").textContent="Select a date and time to continue.";
-        $("confirmButton").disabled=true;
-        return;
+    try {
+        return JSON.parse(localStorage.getItem("tableTasteBookings")) || [];
+    } catch (error) {
+        return [];
     }
-    $("summaryText").textContent=date+" at "+time+" · "+$("guestCount").value+
-        " guest(s) · "+$("diningLocation").value+
-        (selectedTable?" · Table "+selectedTable:" · Select a table");
-    $("confirmButton").disabled=!selectedTable;
 }
 
-function findTables() {
-    if(!$("bookingForm").reportValidity())return;
-    const date=new Date($("bookingDate").value+"T"+$("bookingTime").value);
-    if(Number.isNaN(date.getTime()) || date<new Date()) {
-        message("tableMessage","Please select a future date and time.","error");
-        return;
-    }
-    selectedTable="";
-    renderTables();
-    updateSummary();
-
-    const available=tables.filter(t=>t.location===$("diningLocation").value &&
-        !getBookings().some(b=>b.table===t.id && isBooked(b,$("bookingDate").value,$("bookingTime").value))).length;
-
-    message("tableMessage",available?
-        "Found "+available+" available table(s). Select one above.":
-        "No tables are available. Choose another time or location.",available?"success":"error");
+function saveBookings(bookings) {
+    localStorage.setItem("tableTasteBookings", JSON.stringify(bookings));
 }
 
-function confirmBooking() {
-    if(!$("bookingForm").reportValidity())return;
+function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[character]);
+}
 
-    const dt=new Date($("bookingDate").value+"T"+$("bookingTime").value);
-    if(Number.isNaN(dt.getTime())||dt<new Date()) {
-        message("tableMessage","Please select a future date and time.","error");
-        return;
-    }
-    if(!selectedTable) {
-        message("tableMessage","Please select a table.","error");
-        return;
-    }
+function showMessage(elementId, html) {
+    const element = document.getElementById(elementId);
+    element.innerHTML = html;
+    element.classList.add("show");
+}
 
-    const bookings=getBookings();
-    if(bookings.some(b=>b.table===selectedTable && isBooked(b,$("bookingDate").value,$("bookingTime").value))) {
-        selectedTable="";
-        renderTables();
-        updateSummary();
-        message("tableMessage","This table is already booked. Choose another.","error");
-        return;
-    }
+document.getElementById("reservationForm").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-    const b={
-        id:"TT"+Date.now().toString().slice(-9),
-        name:$("customerName").value.trim(),
-        email:$("customerEmail").value.trim().toLowerCase(),
-        phone:$("customerPhone").value.trim(),
-        date:$("bookingDate").value,
-        time:$("bookingTime").value,
-        guests:$("guestCount").value,
-        location:$("diningLocation").value,
-        table:selectedTable,
-        request:$("specialRequest").value.trim(),
-        status:"Confirmed",
-        createdAt:Date.now()
+    const booking = {
+        reference: "TT" + Math.floor(100000 + Math.random() * 900000),
+        name: document.getElementById("customerName").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        date: dateField.value,
+        time: document.getElementById("time").value,
+        guests: document.getElementById("guests").value,
+        table: document.getElementById("table").value,
+        notes: document.getElementById("notes").value.trim(),
+        status: "Confirmed"
     };
 
-    bookings.push(b);
-    saveBookings(bookings);
-    showReceipt(b);
-
-    $("bookingForm").reset();
-    $("bookingDate").min=localToday();
-    $("guestCount").value="2";
-    selectedTable="";
-    renderTables();
-    updateSummary();
-    message("tableMessage","Reservation created successfully.","success");
-}
-
-function formatDate(d) {
-    return d?new Date(d+"T00:00:00").toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"}):"-";
-}
-
-function formatTime(t) {
-    if(!t)return "-";
-    const [h,m]=t.split(":").map(Number);
-    const d=new Date();
-    d.setHours(h,m,0,0);
-    return d.toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"});
-}
-
-function showReceipt(b) {
-    $("receiptStatus").textContent=b.status;
-    $("receiptStatus").className="status "+b.status.toLowerCase();
-    $("receiptDetails").replaceChildren();
-
-    [
-        ["Booking ID",b.id],["Customer",b.name],["Email",b.email],
-        ["Phone",b.phone],["Date",formatDate(b.date)],["Time",formatTime(b.time)],
-        ["Guests",b.guests],["Location",b.location],["Table",b.table],
-        ["Special Request",b.request||"None"]
-    ].forEach(([label,value])=>{
-        const row=document.createElement("div");
-        row.className="receipt-line";
-        const l=document.createElement("span"),v=document.createElement("span");
-        l.textContent=label;v.textContent=value;
-        row.append(l,v);
-        $("receiptDetails").appendChild(row);
-    });
-
-    $("lateWarning").classList.toggle("hidden",!b.cancelReason);
-    $("lateWarning").textContent=b.cancelReason||"";
-    $("receiptModal").classList.remove("hidden");
-}
-
-function closeReceipt() { $("receiptModal").classList.add("hidden"); }
-
-$("receiptModal").addEventListener("click",e=>{
-    if(e.target===$("receiptModal"))closeReceipt();
-});
-
-document.addEventListener("keydown",e=>{
-    if(e.key==="Escape")closeReceipt();
-});
-
-$("lookupForm").addEventListener("submit",e=>{
-    e.preventDefault();
-    const email=$("lookupEmail").value.trim().toLowerCase();
-    const matches=getBookings().filter(b=>b.email===email).sort((a,b)=>b.createdAt-a.createdAt);
-    const results=$("bookingResults");
-    results.replaceChildren();
-
-    if(!matches.length) {
-        const p=document.createElement("p");
-        p.className="message";
-        p.textContent="No bookings found for this email address.";
-        results.appendChild(p);
+    if (booking.date < today) {
+        showMessage("reservationMessage", "Please choose today or a future date.");
         return;
     }
 
-    matches.forEach(b=>{
-        const card=document.createElement("div");
-        card.className="booking-card";
-        const title=document.createElement("h3");
-        title.textContent=b.name;
-        const status=document.createElement("span");
-        status.className="status "+b.status.toLowerCase();
-        status.textContent=b.status;
-        card.append(title,status);
+    const bookings = getBookings();
 
-        [
-            ["Booking ID",b.id],["Date",formatDate(b.date)],
-            ["Time",formatTime(b.time)],["Table",b.table],
-            ["Guests",b.guests],["Location",b.location]
-        ].forEach(([label,value])=>{
-            const p=document.createElement("p");
-            p.textContent=label+": "+value;
-            card.appendChild(p);
-        });
+    const alreadyBooked = bookings.some(item =>
+        item.date === booking.date &&
+        item.time === booking.time &&
+        item.table === booking.table &&
+        item.status === "Confirmed"
+    );
 
-        const actions=document.createElement("div");
-        actions.className="actions";
-        const receipt=document.createElement("button");
-        receipt.className="primary";
-        receipt.textContent="View Receipt";
-        receipt.onclick=()=>showReceipt(b);
-        actions.appendChild(receipt);
+    if (alreadyBooked) {
+        showMessage("reservationMessage",
+            "<strong>Table unavailable.</strong><br>Please select another table or time.");
+        return;
+    }
 
-        if(b.status==="Confirmed") {
-            const cancel=document.createElement("button");
-            cancel.textContent="Cancel Booking";
-            cancel.onclick=()=>{
-                if(!confirm("Are you sure you want to cancel this booking?"))return;
-                const all=getBookings();
-                const item=all.find(x=>x.id===b.id);
-                if(item&&item.status==="Confirmed")item.status="Cancelled";
-                saveBookings(all);
-                $("lookupForm").requestSubmit();
-            };
-            actions.appendChild(cancel);
-        }
+    bookings.push(booking);
+    saveBookings(bookings);
 
-        card.appendChild(actions);
-        results.appendChild(card);
-    });
+    showMessage("reservationMessage", `
+        <strong>Reservation successful!</strong><br>
+        Your booking reference is <strong>${escapeHTML(booking.reference)}</strong>.<br>
+        Name: ${escapeHTML(booking.name)}<br>
+        Date: ${escapeHTML(booking.date)}<br>
+        Time: ${escapeHTML(booking.time)}<br>
+        Guests: ${escapeHTML(booking.guests)}<br>
+        Table: ${escapeHTML(booking.table)}<br>
+        Status: Confirmed<br><br>
+        <button class="btn" onclick="printBooking('${booking.reference}')">
+            Print Reservation
+        </button>
+    `);
+
+    document.getElementById("bookingReference").value = booking.reference;
+    this.reset();
+    dateField.min = today;
 });
 
-$("adminForm").addEventListener("submit",e=>{
-    e.preventDefault();
-    if($("adminUsername").value==="kitchu" && $("adminPassword").value==="kitchu2006@") {
-        adminLoggedIn=true;
-        $("adminLogin").classList.add("hidden");
-        $("adminDashboard").classList.remove("hidden");
-        message("loginMessage","");
+function findBooking() {
+    const reference = document.getElementById("bookingReference")
+        .value.trim().toUpperCase();
+
+    if (!reference) {
+        showMessage("bookingMessage", "Please enter your booking reference.");
+        return;
+    }
+
+    const booking = getBookings().find(item =>
+        item.reference.toUpperCase() === reference
+    );
+
+    if (!booking) {
+        showMessage("bookingMessage",
+            "No booking found. Check your reference and try again.");
+        return;
+    }
+
+    showMessage("bookingMessage", `
+        <strong>Reservation Details</strong>
+        <div class="booking-details">
+            <p><strong>Reference:</strong> ${escapeHTML(booking.reference)}</p>
+            <p><strong>Name:</strong> ${escapeHTML(booking.name)}</p>
+            <p><strong>Phone:</strong> ${escapeHTML(booking.phone)}</p>
+            <p><strong>Date:</strong> ${escapeHTML(booking.date)}</p>
+            <p><strong>Time:</strong> ${escapeHTML(booking.time)}</p>
+            <p><strong>Guests:</strong> ${escapeHTML(booking.guests)}</p>
+            <p><strong>Table:</strong> ${escapeHTML(booking.table)}</p>
+            <p><strong>Requests:</strong> ${escapeHTML(booking.notes || "None")}</p>
+            <p><strong>Status:</strong> ${escapeHTML(booking.status)}</p>
+        </div>
+        <div class="button-row">
+            ${booking.status === "Confirmed"
+                ? `<button class="btn danger" onclick="cancelBooking('${booking.reference}')">Cancel Booking</button>`
+                : ""}
+            <button class="btn" onclick="printBooking('${booking.reference}')">Print Details</button>
+        </div>
+    `);
+}
+
+function cancelBooking(reference) {
+    if (!confirm("Are you sure you want to cancel this booking?")) return;
+
+    const bookings = getBookings();
+    const booking = bookings.find(item => item.reference === reference);
+
+    if (!booking || booking.status !== "Confirmed") return;
+
+    booking.status = "Cancelled";
+    saveBookings(bookings);
+    findBooking();
+}
+
+function printBooking(reference) {
+    const booking = getBookings().find(item => item.reference === reference);
+
+    if (!booking) {
+        alert("Booking not found.");
+        return;
+    }
+
+    const printWindow = window.open("", "_blank");
+
+    if (!printWindow) {
+        alert("Allow pop-ups in your browser to print the reservation.");
+        return;
+    }
+
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Table & Taste Reservation</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    max-width: 600px;
+                    margin: 35px auto;
+                    padding: 25px;
+                    color: #563c2c;
+                    border: 1px solid #ddcdbc;
+                }
+                h1, h2 { text-align: center; }
+                p { padding: 8px; border-bottom: 1px solid #eee2d5; }
+            </style>
+        </head>
+        <body>
+            <h1>Table & Taste</h1>
+            <h2>Reservation Receipt</h2>
+            <p><strong>Reference:</strong> ${escapeHTML(booking.reference)}</p>
+            <p><strong>Name:</strong> ${escapeHTML(booking.name)}</p>
+            <p><strong>Phone:</strong> ${escapeHTML(booking.phone)}</p>
+            <p><strong>Date:</strong> ${escapeHTML(booking.date)}</p>
+            <p><strong>Time:</strong> ${escapeHTML(booking.time)}</p>
+            <p><strong>Guests:</strong> ${escapeHTML(booking.guests)}</p>
+            <p><strong>Table:</strong> ${escapeHTML(booking.table)}</p>
+            <p><strong>Status:</strong> ${escapeHTML(booking.status)}</p>
+            <p><strong>Special Requests:</strong> ${escapeHTML(booking.notes || "None")}</p>
+            <p>Thank you for choosing Table & Taste.</p>
+            <script>window.onload = function() { window.print(); }<\/script>
+        </body>
+        </html>
+    `);
+
+    printWindow.document.close();
+}
+
+/* Demo admin login only; not secure authentication */
+document.getElementById("adminLoginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("adminUser").value.trim();
+    const password = document.getElementById("adminPassword").value;
+
+    if (username === "admin" && password === "admin123") {
+        document.getElementById("adminDashboard").hidden = false;
+        document.getElementById("adminLoginMessage").classList.remove("show");
         renderAdmin();
     } else {
-        message("loginMessage","Incorrect username or password.","error");
+        showMessage("adminLoginMessage",
+            "Incorrect login. For this demo, use username <strong>admin</strong> and password <strong>admin123</strong>.");
     }
 });
 
-function adminLogout() {
-    adminLoggedIn=false;
-    $("adminLogin").classList.remove("hidden");
-    $("adminDashboard").classList.add("hidden");
-    $("adminForm").reset();
-}
-
 function renderAdmin() {
-    if(!adminLoggedIn)return;
-    const bookings=getBookings().sort((a,b)=>b.createdAt-a.createdAt);
-    $("totalCount").textContent=bookings.length;
-    $("confirmedCount").textContent=bookings.filter(b=>b.status==="Confirmed").length;
-    $("cancelledCount").textContent=bookings.filter(b=>b.status==="Cancelled").length;
-    $("adminEmpty").textContent=bookings.length?"":"No reservations have been made yet.";
+    const bookings = getBookings();
 
-    const body=$("adminTableBody");
-    body.replaceChildren();
+    document.getElementById("totalBookings").textContent = bookings.length;
+    document.getElementById("confirmedBookings").textContent =
+        bookings.filter(item => item.status === "Confirmed").length;
+    document.getElementById("cancelledBookings").textContent =
+        bookings.filter(item => item.status === "Cancelled").length;
 
-    bookings.forEach(b=>{
-        const row=document.createElement("tr");
-        [b.name,b.email+" / "+b.phone,formatDate(b.date)+" "+formatTime(b.time),
-         b.table,b.guests,b.status].forEach(value=>{
-            const td=document.createElement("td");
-            td.textContent=value;
-            row.appendChild(td);
-        });
+    const tbody = document.getElementById("adminTableBody");
 
-        const td=document.createElement("td");
+    if (bookings.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7">No reservations have been saved yet.</td></tr>';
+        return;
+    }
 
-        if(b.status==="Confirmed") {
-            const arrived=document.createElement("button");
-            arrived.textContent="Arrived";
-            arrived.onclick=()=>updateStatus(b.id,"Arrived");
+    tbody.innerHTML = bookings.map(booking => `
+        <tr>
+            <td>${escapeHTML(booking.reference)}</td>
+            <td>${escapeHTML(booking.name)}</td>
+            <td>${escapeHTML(booking.date)}</td>
+            <td>${escapeHTML(booking.time)}</td>
+            <td>${escapeHTML(booking.guests)}</td>
+            <td>${escapeHTML(booking.table)}</td>
+            <td>
+                <span class="status ${booking.status === "Cancelled" ? "cancelled" : ""}">
+                    ${escapeHTML(booking.status)}
+                </span>
+            </td>
+        </tr>
+    `).join("");
+}
 
-            const cancel=document.createElement("button");
-            cancel.textContent="Cancel";
-            cancel.onclick=()=>{
-                if(confirm("Cancel this reservation?"))updateStatus(b.id,"Cancelled");
-            };
-            td.append(arrived,cancel);
-        } else if(b.status==="Arrived") {
-            const complete=document.createElement("button");
-            complete.textContent="Complete";
-            complete.onclick=()=>updateStatus(b.id,"Completed");
-            td.appendChild(complete);
-        } else {
-            td.textContent="-";
-        }
+function adminLogout() {
+    document.getElementById("adminDashboard").hidden = true;
+    document.getElementById("adminLoginForm").reset();
+    document.getElementById("adminLoginMessage").classList.remove("show");
+}
 
-        row.appendChild(td);
-        body.appendChild(row);
+function exportBookings() {
+    const bookings = getBookings();
+
+    if (bookings.length === 0) {
+        alert("There are no reservations to export.");
+        return;
+    }
+
+    const columns = [
+        "reference", "name", "phone", "date",
+        "time", "guests", "table", "notes", "status"
+    ];
+
+    const csvCell = value =>
+        '"' + String(value ?? "").replace(/"/g, '""') + '"';
+
+    const csv = [
+        columns.join(","),
+        ...bookings.map(booking =>
+            columns.map(column => csvCell(booking[column])).join(",")
+        )
+    ].join("\r\n");
+
+    const blob = new Blob(["\uFEFF" + csv], {
+        type: "text/csv;charset=utf-8;"
     });
-}
 
-function updateStatus(id,status) {
-    const bookings=getBookings();
-    const booking=bookings.find(b=>b.id===id);
-    if(!booking)return;
-    booking.status=status;
-    saveBookings(bookings);
-    renderAdmin();
-}
-
-function exportCSV() {
-    if(!adminLoggedIn)return;
-    const bookings=getBookings();
-    if(!bookings.length){alert("There are no bookings to export.");return;}
-
-    const columns=["id","name","email","phone","date","time","table","location","guests","status","request"];
-    const quote=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
-    const csv=[columns.join(","),...bookings.map(b=>columns.map(c=>quote(b[c])).join(","))].join("\r\n");
-    const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement("a");
-    a.href=url;a.download="table-taste-bookings.csv";a.click();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "table-taste-bookings.csv";
+    link.click();
     URL.revokeObjectURL(url);
 }
-
-// Demo late cancellation check. Runs while the page is open.
-function checkLateBookings() {
-    const bookings=getBookings();
-    let changed=false;
-    const now=Date.now();
-
-    bookings.forEach(b=>{
-        if(b.status!=="Confirmed")return;
-        const time=new Date(b.date+"T"+b.time).getTime();
-        if(!Number.isNaN(time)&&now>time+15*60*1000) {
-            b.status="Cancelled";
-            b.cancelReason="Cancelled because arrival was more than 15 minutes late.";
-            changed=true;
-        }
-    });
-
-    if(changed) {
-        saveBookings(bookings);
-        if(adminLoggedIn)renderAdmin();
-    }
-}
-
-checkLateBookings();
-setInterval(checkLateBookings,30000);
-renderTables();
-updateSummary();
 </script>
+
 </body>
 </html>
